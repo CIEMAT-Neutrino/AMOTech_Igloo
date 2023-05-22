@@ -49,9 +49,9 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct(){
 	physWall = new G4PVPlacement(0, G4ThreeVector(0., insideH*m, 0.), logicWall, "physWall", logicWorld, false, 0, true);
 	logicWall->SetVisAttributes(logicConcVisAtt);
 
-	solidIron = new G4Box("solidIron", 3.425*m, 0.075*m, 0.25*18*m);
+	solidIron = new G4Box("solidIron", 3.7*m, 0.085*m, 0.2*22*m);
 	logicIron = new G4LogicalVolume(solidIron, iron, "logicIron");
-	physIron = new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceillingThick+0.075)*m, 0.), logicIron, "physIron", logicWorld, false, 0, true);
+	physIron = new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceillingThick+0.085)*m, 0.), logicIron, "physIron", logicWorld, false, 0, true);
 	logicIron->SetVisAttributes(logicIronVisAtt);
 
 	solidCeilling = new G4Box("solidCeilling", (insideS+wallThick)*m, ceillingThick/2*m, (insideL+wallThick)*m);
