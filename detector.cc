@@ -26,18 +26,6 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 	G4double kinEnergy = preStepPoint->GetKineticEnergy();
 	G4double mass = preStepPoint->GetMass();
 
-	//G4cout << "Particle position: " << posPhoton << G4endl;
-
-	//const G4VTouchable *touchable = aStep->GetPreStepPoint()->GetTouchable();
-
-	//G4int copyNo = touchable->GetCopyNumber();
-
-	//G4cout << "Copy number: " << copyNo << G4endl;
-
-	//G4VPhysicalVolume *physVol = touchable->GetVolume();
-	//G4ThreeVector posDetector = physVol->GetTranslation();
-
-	//G4cout << "Detector position: " << posDetector << G4endl;
 
 	G4int evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
 	if(evt%1000==0){
