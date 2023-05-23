@@ -51,3 +51,11 @@ You can also create your own macro file for the simulation.
 ```
 
 You have to write the path of your macro file. By default, when you do cmake it copies every macro file to the build folder.
+
+## Exmaple
+
+You have one macro file as an example. If you start the simulation with this example
+```console
+   ./sim run.mac
+```
+it will give you back two ROOT files: output0.root and output1.root, corresponding to two runs of the simulation.
