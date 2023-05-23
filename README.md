@@ -50,4 +50,4 @@ You can also create your own macro file for the simulation.
    ./sim mymacro.mac
 ```
 
-You have write the path of your macro file. By default, when you do cmake it copies every macro file to the build folder.
+You have to write the path of your macro file. By default, when you do cmake it copies every macro file to the build folder.
