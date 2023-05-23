@@ -38,7 +38,12 @@ If you just do
 ```console
    ./sim
 ```
-it starts the visualization window. There you can use all the defaults commands of Geant4 and also you can change the thickness of the ceillind and the walls of the Igloo.
+it starts the visualization window. There you can use all the defaults commands of Geant4 and also you can change the thickness of the ceilling and the walls of the Igloo with the commands:
+```console
+   /shield/ceillingThick 0.8
+   /shield/wallThick 1.5
+```
+(units in meters)
 
 You can also create your own macro file for the simulation.
 ```console
