@@ -27,8 +27,10 @@ void MyRunAction::BeginOfRunAction(const G4Run* run){
 
 	G4int runID = run->GetRunID();
 
+	G4cout << "************** Run ID: " << runID << "*******************" << G4endl;
+
 	std::stringstream strRunID;
-	strRunID << runID ;//<< "-" << depth << "m";
+	strRunID << runID ;
 
 	man->OpenFile("output"+strRunID.str()+".root");
 	
