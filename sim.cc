@@ -8,9 +8,10 @@
 #include "G4UIExecutive.hh"
 
 #include "construction.hh"
-#include "QGSP_INCLXX_HP.hh"
-//#include "Shielding.hh"
 #include "physics.hh"
+#include "Shielding.hh"
+#include "QGSP_INCLXX_HP.hh"
+#include "QGSP_BERT_HP.hh"
 #include "action.hh"
 
 
@@ -20,9 +21,10 @@ int main(int argc, char** argv){
 
 	runManager->SetUserInitialization(new MyDetectorConstruction());
 	//Physics lists:
-	//runManager->SetUserInitialization(new Shielding); 
 	runManager->SetUserInitialization(new MyPhysicsList());
+	//runManager->SetUserInitialization(new Shielding); 
 	runManager->SetUserInitialization(new QGSP_INCLXX_HP);
+	//runManager->SetUserInitialization(new QGSP_BERT_HP);
 	//
 	runManager->SetUserInitialization(new MyActionInitialization());
 
