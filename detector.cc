@@ -28,9 +28,9 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 
 
 	G4int evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
-	if(evt%1000==0){
-		G4cout << "Event: " << evt << " \n" << G4endl;
-	}
+	//if(evt%1000==0){
+	//	G4cout << "Event: " << evt << " \n" << G4endl;
+	//}
 	
 
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
