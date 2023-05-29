@@ -20,16 +20,22 @@ MyPrimaryGenerator::~MyPrimaryGenerator(){
 }
 
 void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent){
-	phi = G4UniformRand()*2.0*pi;
-	cosTheta = G4UniformRand();
-	sinTheta = sqrt(1.0 - cosTheta*cosTheta);
+	//phi = G4UniformRand()*2.0*pi;
+	//cosTheta = G4UniformRand();
+	//sinTheta = sqrt(1.0 - cosTheta*cosTheta);
 	//G4ThreeVector pos(rad*TMath::Cos(phi)*sinTheta, rad*cosTheta ,rad*TMath::Sin(phi)*sinTheta); //Horizonal axes are x and z, vertical is y
-	G4ThreeVector pos(rad*TMath::Cos(phi)*sinTheta, rad*cosTheta ,rad*TMath::Sin(phi)*sinTheta); //Horizonal axes are x and z, vertical is y
 	
+	G4double Srand = (G4UniformRand()*2-1)*(2.4);
+	G4double Lrand = (G4UniformRand()*2-1)*(4.0);
+	G4double H = 4.;
+	G4ThreeVector pos(Srand*m, H*m, Lrand*m); //Horizonal axes are x and z, vertical is y
+	
+	G4ThreeVector down = G4ThreeVector(0., -1., 0.);
 	G4ThreeVector mom = -1.0*pos;
 
 	fParticleGun->SetParticlePosition(pos);
-	fParticleGun->SetParticleMomentumDirection(mom);
+	fParticleGun->SetParticleMomentumDirection(down);
 
 	fParticleGun->GeneratePrimaryVertex(anEvent);
+
 }
