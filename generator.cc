@@ -27,7 +27,7 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent){
 	
 	G4double Srand = (G4UniformRand()*2-1)*(2.4);
 	G4double Lrand = (G4UniformRand()*2-1)*(4.0);
-	G4double H = 4.;
+	G4double H = 7.;
 	G4ThreeVector pos(Srand*m, H*m, Lrand*m); //Horizonal axes are x and z, vertical is y
 	
 	G4ThreeVector down = G4ThreeVector(0., -1., 0.);
