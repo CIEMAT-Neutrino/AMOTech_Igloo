@@ -8,10 +8,13 @@
 #include "G4UIExecutive.hh"
 
 #include "construction.hh"
+// Physics lists: (to be tested)
 #include "physics.hh"
-#include "Shielding.hh"
-#include "QGSP_INCLXX_HP.hh"
+//#include "QGSP_INCLXX_HP.hh" //Not recommended
 #include "QGSP_BERT_HP.hh"
+#include "QGSP_BIC_HP.hh"
+//#include "Shielding.hh"
+
 #include "action.hh"
 
 
@@ -20,12 +23,7 @@ int main(int argc, char** argv){
 	G4RunManager *runManager = new G4RunManager();
 
 	runManager->SetUserInitialization(new MyDetectorConstruction());
-	//Physics lists:
-	runManager->SetUserInitialization(new MyPhysicsList());
-	//runManager->SetUserInitialization(new Shielding); 
-	runManager->SetUserInitialization(new QGSP_INCLXX_HP);
-	//runManager->SetUserInitialization(new QGSP_BERT_HP);
-	//
+	runManager->SetUserInitialization(new QGSP_BERT_HP);
 	runManager->SetUserInitialization(new MyActionInitialization());
 
 	runManager->Initialize();
