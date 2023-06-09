@@ -26,14 +26,14 @@ private:
 	
 	virtual void ConstructSDandField();
 
-	G4double wallThick, ceillingThick;
+	G4double wallThick, ceilingThick;
 
-	G4Box *solidWorld, *solidCeilling, *solidIron, *solidDetector;
+	G4Box *solidWorld, *solidCeiling, *solidIron, *solidDetector;
 	G4Box *outerIgloo, *innerIgloo; 
 	G4SubtractionSolid *solidWall;
 	
-	G4LogicalVolume *logicWorld, *logicWall, *logicCeilling, *logicIron, *logicDetector;
-	G4VPhysicalVolume *physWorld, *physWall, *physCeilling, *physIron, *physDetector;
+	G4LogicalVolume *logicWorld, *logicWall, *logicCeiling, *logicIron, *logicDetector;
+	G4VPhysicalVolume *physWorld, *physWall, *physCeiling, *physIron, *physDetector;
 
 	G4Material *worldMat, *Conc, *water, *iron;
 	G4double insideS, insideH, insideL;
