@@ -8,8 +8,8 @@ MyDetectorConstruction::MyDetectorConstruction(){
 	fMessenger->DeclareProperty("wallThick", wallThick, "Thickness of the walls (meters)");
 	wallThick = 1.6; //Set thickness of the walls (meters)
 
-	fMessenger->DeclareProperty("ceillingThick", ceillingThick, "Thickness of the ceiling (meters)");
-	ceillingThick = 0.8; //Set thickness of the ceiling (meters)
+	fMessenger->DeclareProperty("ceilingThick", ceilingThick, "Thickness of the ceiling (meters)");
+	ceilingThick = 0.8; //Set thickness of the ceiling (meters)
 
 	DefineMaterials();
 	
@@ -47,13 +47,13 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct(){
 
 	solidIron = new G4Box("solidIron", 3.7*m, 0.085*m, 0.2*22*m);
 	logicIron = new G4LogicalVolume(solidIron, iron, "logicIron");
-	physIron = new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceillingThick+0.085)*m, 0.), logicIron, "physIron", logicWorld, false, 0, true);
+	physIron = new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceilingThick+0.085)*m, 0.), logicIron, "physIron", logicWorld, false, 0, true);
 	logicIron->SetVisAttributes(logicIronVisAtt);
 
-	solidCeilling = new G4Box("solidCeilling", (insideS+wallThick)*m, ceillingThick/2*m, (insideL+wallThick)*m);
-	logicCeilling = new G4LogicalVolume(solidCeilling, Conc, "logicCeilling");
-	physCeilling =	new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceillingThick/2)*m, 0.), logicCeilling, "physCeilling", logicWorld, false, 0, true);
-	logicCeilling->SetVisAttributes(logicConcVisAtt);
+	solidCeiling = new G4Box("solidCeiling", (insideS+wallThick)*m, ceilingThick/2*m, (insideL+wallThick)*m);
+	logicCeiling = new G4LogicalVolume(solidCeiling, Conc, "logicCeiling");
+	physCeiling =	new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceilingThick/2)*m, 0.), logicCeiling, "physCeiling", logicWorld, false, 0, true);
+	logicCeiling->SetVisAttributes(logicConcVisAtt);
 	
 	//Only one detector
 	solidDetector = new G4Box("solidDetector", insideS*m, insideH*m, insideL*m);
