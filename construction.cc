@@ -8,8 +8,8 @@ MyDetectorConstruction::MyDetectorConstruction(){
 	fMessenger->DeclareProperty("wallThick", wallThick, "Thickness of the walls (meters)");
 	wallThick = 1.6; //Set thickness of the walls (meters)
 
-	fMessenger->DeclareProperty("ceillingThick", ceillingThick, "Thickness of the ceilling (meters)");
-	ceillingThick = 0.8; //Set thickness of the ceilling (meters)
+	fMessenger->DeclareProperty("ceillingThick", ceillingThick, "Thickness of the ceiling (meters)");
+	ceillingThick = 0.8; //Set thickness of the ceiling (meters)
 
 	DefineMaterials();
 	
