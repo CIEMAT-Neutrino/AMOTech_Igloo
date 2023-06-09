@@ -52,7 +52,11 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct(){
 
 	solidCeiling = new G4Box("solidCeiling", (insideS+wallThick)*m, ceilingThick/2*m, (insideL+wallThick)*m);
 	logicCeiling = new G4LogicalVolume(solidCeiling, Conc, "logicCeiling");
-	physCeiling =	new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceilingThick/2)*m, 0.), logicCeilling, "physCeilling", logicWorld, false, 0, true);
+<<<<<<< HEAD
+	physCeiling =	new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceilingThick/2)*m, 0.), logicCeiling, "physCeiling", logicWorld, false, 0, true);
+=======
+	physCeiling =	new G4PVPlacement(0, G4ThreeVector(0., (insideH*2+ceilingThick/2)*m, 0.), logicCeiling, "physCeiling", logicWorld, false, 0, true);
+>>>>>>> 5841a5dd797aaef4cc3af934e3ce3295944ecc76
 	logicCeiling->SetVisAttributes(logicConcVisAtt);
 	
 	//Only one detector
