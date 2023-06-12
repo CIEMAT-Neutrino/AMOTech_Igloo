@@ -17,6 +17,7 @@ MyRunAction::MyRunAction(){
 	man->CreateNtupleDColumn("fKineticEnergy");
 	man->CreateNtupleDColumn("fMass");
 	man->CreateNtupleIColumn("fParticleID");
+	man->CreateNtupleSColumn("fParticleName");
 	man->FinishNtuple(0);
 }
 

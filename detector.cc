@@ -46,6 +46,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 	man->FillNtupleDColumn(9, kinEnergy);
 	man->FillNtupleDColumn(10, mass);
 	man->FillNtupleIColumn(11, particleID);
+	man->FillNtupleSColumn(12, particleName);
 	man->AddNtupleRow(0);
 	
 
