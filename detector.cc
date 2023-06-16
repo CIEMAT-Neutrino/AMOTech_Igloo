@@ -18,7 +18,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 	const G4ParticleDefinition *particle = track->GetParticleDefinition();
 
 	G4int particleID = particle->GetPDGEncoding();
-	G4String particleName[10] = {particle->GetParticleName()};
+	G4String particleName = particle->GetParticleName();
 	G4ThreeVector posParticle = preStepPoint->GetPosition();
 	G4ThreeVector momParticle = preStepPoint->GetMomentum();
 	momentum = sqrt(momParticle[0]*momParticle[0]+momParticle[1]*momParticle[1]+momParticle[2]*momParticle[2]);
