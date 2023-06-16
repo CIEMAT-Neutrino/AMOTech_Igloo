@@ -23,7 +23,6 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent){
 	phi = G4UniformRand()*2.0*pi;
 	cosTheta = G4UniformRand();
 	sinTheta = sqrt(1.0 - cosTheta*cosTheta);
-	//G4ThreeVector pos(rad*TMath::Cos(phi)*sinTheta, rad*cosTheta ,rad*TMath::Sin(phi)*sinTheta); //Horizonal axes are x and z, vertical is y
 	G4ThreeVector pos(rad*TMath::Cos(phi)*sinTheta, rad*cosTheta ,rad*TMath::Sin(phi)*sinTheta); //Horizonal axes are x and z, vertical is y
 	
 	G4ThreeVector mom = -1.0*pos;
