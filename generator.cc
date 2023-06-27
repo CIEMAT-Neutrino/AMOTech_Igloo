@@ -31,7 +31,7 @@ G4double MyPrimaryGenerator::DifferentialFlux(double energy){
 void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent){
 
 
-	//Another default generation
+	//Randomly generate a position on a rectangle over the detector volume
 	G4double Srand = (G4UniformRand()*2-1)*(2.4);
 	G4double Lrand = (G4UniformRand()*2-1)*(4.0);
 	G4double H = 7.;
@@ -50,7 +50,7 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent){
 	}
 	fParticleGun->SetParticleEnergy(energy_rand*MeV);
 
-	/*
+	/*//Randomly generate a position on a sphere
 	phi = G4UniformRand()*2.0*pi;
 	cosTheta = G4UniformRand();
 	sinTheta = sqrt(1.0 - cosTheta*cosTheta);
