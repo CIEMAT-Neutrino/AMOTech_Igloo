@@ -9,11 +9,6 @@
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleTable.hh"
 
-#include <stdio.h>
-#include <sqlite3.h>
-#include <stdlib.h>
-//#include "ifdh.h"
-
 #include "TMath.h"
 
 class MyPrimaryGenerator : public G4VUserPrimaryGeneratorAction{
@@ -24,18 +19,20 @@ public:
 
 	virtual void GeneratePrimaries(G4Event*);
 
+	G4double DifferentialFlux(double energy);
+
 
 private:
 	G4ParticleGun *fParticleGun;
 
 	G4double rad = 8*m;
 	G4double phi, cosTheta, sinTheta; 
-
+	/*
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
-
-	bool defaultGenerator = false;
+	*/
+	bool defaultGenerator = true;
 
 };
 
