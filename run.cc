@@ -44,5 +44,6 @@ void MyRunAction::EndOfRunAction(const G4Run*){
 
 	man->Write();
 	man->CloseFile();
+	G4cout << "************** end of run *******************" << G4endl;
 
 }
