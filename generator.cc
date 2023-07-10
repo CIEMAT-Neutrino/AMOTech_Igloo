@@ -3,17 +3,20 @@
 using namespace CLHEP;
 
 MyPrimaryGenerator::MyPrimaryGenerator(){
-	fParticleGun = new G4ParticleGun(1);
+	//fParticleGun = new G4ParticleGun(1);
+	fParticleSource = new G4GeneralParticleSource();
 
 	G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
 	G4String particleName = "neutron";
 	G4ParticleDefinition *particle = particleTable->FindParticle("neutron");
 	
-	fParticleGun->SetParticleDefinition(particle);
+	//fParticleGun->SetParticleDefinition(particle);
+	fParticleSource->SetParticleDefinition(particle);
 }
 
 MyPrimaryGenerator::~MyPrimaryGenerator(){
-	delete fParticleGun;
+	//delete fParticleGun;
+	delete fParticleSource;
 }
 
 G4double MyPrimaryGenerator::DifferentialFlux(double energy){
@@ -30,12 +33,15 @@ G4double MyPrimaryGenerator::DifferentialFlux(double energy){
 
 void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent){
 
-
+	fParticleSource->GetCurrentSource()->GetPosDist()->SetPosDisType("Plane");
+	fParticleSource->GetCurrentSource()->GetAngDist()->SetAngDistType("planar");
+	fParticleSource->GetCurrentSource()->GetPosDist()->SetPosDisShape("Rectangle");
 	//Randomly generate a position on a rectangle over the detector volume
 	G4double Srand = (G4UniformRand()*2-1)*(2.4);
 	G4double Lrand = (G4UniformRand()*2-1)*(4.0);
 	G4double H = 7.;
-	G4ThreeVector pos(Srand*m, H*m, Lrand*m); //Horizonal axes are x and z, vertical is y
+	//G4ThreeVector pos(Srand*m, H*m, Lrand*m); //Horizonal axes are x and z, vertical is y
+	G4ThreeVector pos(0, H*m, 0);
 
 	G4double energy_rand, prob, rand;
 	while(true){
@@ -48,19 +54,26 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent){
 		}
 
 	}
-	fParticleGun->SetParticleEnergy(energy_rand*MeV);
+	//fParticleGun->SetParticleEnergy(energy_rand*MeV);
+	fParticleSource->GetCurrentSource()->GetEneDist()->SetMonoEnergy(energy_rand*MeV);
 
-	/*//Randomly generate a position on a sphere
+/*	//Randomly generate a position on a sphere
 	phi = G4UniformRand()*2.0*pi;
 	cosTheta = G4UniformRand();
 	sinTheta = sqrt(1.0 - cosTheta*cosTheta);
 	G4ThreeVector pos(rad*TMath::Cos(phi)*sinTheta, rad*cosTheta ,rad*TMath::Sin(phi)*sinTheta); //Horizonal axes are x and z, vertical is y
-	*/
+*/
 	G4ThreeVector down = G4ThreeVector(0., -1., 0.);
 	G4ThreeVector mom = -1.0*pos;
 
-	fParticleGun->SetParticlePosition(pos);
-	fParticleGun->SetParticleMomentumDirection(down);
+	//fParticleGun->SetParticlePosition(pos);
+	fParticleSource->GetCurrentSource()->GetPosDist()->SetHalfX(2.4*m);
+	fParticleSource->GetCurrentSource()->GetPosDist()->SetHalfY(4.0*m);
+	fParticleSource->GetCurrentSource()->GetPosDist()->SetPosRot2(G4ThreeVector(0., 0.,-1.));
+	fParticleSource->GetCurrentSource()->GetPosDist()->SetCentreCoords(pos);
+	//fParticleGun->SetParticleMomentumDirection(down);
+	fParticleSource->GetCurrentSource()->GetAngDist()->SetParticleMomentumDirection(down);
 
-	fParticleGun->GeneratePrimaryVertex(anEvent);
+	//fParticleGun->GeneratePrimaryVertex(anEvent);
+	fParticleSource->GeneratePrimaryVertex(anEvent);
 }

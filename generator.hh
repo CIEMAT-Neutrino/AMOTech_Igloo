@@ -5,7 +5,8 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 
-#include "G4ParticleGun.hh"
+//#include "G4ParticleGun.hh"
+#include "G4GeneralParticleSource.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleTable.hh"
 
@@ -23,16 +24,11 @@ public:
 
 
 private:
-	G4ParticleGun *fParticleGun;
+	//G4ParticleGun *fParticleGun;
+	G4GeneralParticleSource *fParticleSource;
 
 	G4double rad = 8*m;
 	G4double phi, cosTheta, sinTheta; 
-	/*
-	sqlite3 *db;
-	char *zErrMsg = 0;
-	int rc;
-	*/
-	bool defaultGenerator = true;
 
 };
 
