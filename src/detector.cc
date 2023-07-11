@@ -18,7 +18,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 	const G4ParticleDefinition *particle = track->GetParticleDefinition();
 
 	G4int particleID = particle->GetPDGEncoding();
-	G4String particleName[10] = {particle->GetParticleName()};
+	G4String particleName = particle->GetParticleName();
 	G4ThreeVector posParticle = preStepPoint->GetPosition();
 	G4ThreeVector momParticle = preStepPoint->GetMomentum();
 	momentum = sqrt(momParticle[0]*momParticle[0]+momParticle[1]*momParticle[1]+momParticle[2]*momParticle[2]);
@@ -28,9 +28,9 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 
 
 	G4int evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
-	if(evt%1000==0){
-		G4cout << "Event: " << evt << " \n" << G4endl;
-	}
+	//if(evt%1000==0){
+	//	G4cout << "Event: " << evt << " \n" << G4endl;
+	//}
 	
 
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
@@ -46,6 +46,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 	man->FillNtupleDColumn(9, kinEnergy);
 	man->FillNtupleDColumn(10, mass);
 	man->FillNtupleIColumn(11, particleID);
+	man->FillNtupleSColumn(12, particleName);
 	man->AddNtupleRow(0);
 	
 

@@ -8,9 +8,12 @@
 #include "G4UIExecutive.hh"
 
 #include "construction.hh"
-#include "QGSP_INCLXX_HP.hh"
+// Physics lists: (to be tested)
+#include "physics.hh" //My own physics list
+#include "QGSP_BERT_HP.hh"
+#include "QGSP_BIC_HP.hh"
 //#include "Shielding.hh"
-#include "physics.hh"
+
 #include "action.hh"
 
 
@@ -19,11 +22,7 @@ int main(int argc, char** argv){
 	G4RunManager *runManager = new G4RunManager();
 
 	runManager->SetUserInitialization(new MyDetectorConstruction());
-	//Physics lists:
-	//runManager->SetUserInitialization(new Shielding); 
-	runManager->SetUserInitialization(new MyPhysicsList());
-	runManager->SetUserInitialization(new QGSP_INCLXX_HP);
-	//
+	runManager->SetUserInitialization(new QGSP_BERT_HP);
 	runManager->SetUserInitialization(new MyActionInitialization());
 
 	runManager->Initialize();
@@ -41,7 +40,7 @@ int main(int argc, char** argv){
 	G4UImanager *UImanager = G4UImanager::GetUIpointer();
 
 	if(ui){
-		UImanager->ApplyCommand("/control/execute vis.mac");
+		UImanager->ApplyCommand("/control/execute ../macros/vis.mac");
 		ui->SessionStart();
 	}else{
 		G4String command = "/control/execute ";

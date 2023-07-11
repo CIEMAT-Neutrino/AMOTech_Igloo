@@ -17,6 +17,7 @@ MyRunAction::MyRunAction(){
 	man->CreateNtupleDColumn("fKineticEnergy");
 	man->CreateNtupleDColumn("fMass");
 	man->CreateNtupleIColumn("fParticleID");
+	man->CreateNtupleSColumn("fParticleName");
 	man->FinishNtuple(0);
 }
 
@@ -43,5 +44,6 @@ void MyRunAction::EndOfRunAction(const G4Run*){
 
 	man->Write();
 	man->CloseFile();
+	G4cout << "************** end of run *******************" << G4endl;
 
 }

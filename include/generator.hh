@@ -5,7 +5,8 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 
-#include "G4ParticleGun.hh"
+//#include "G4ParticleGun.hh"
+#include "G4GeneralParticleSource.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleTable.hh"
 
@@ -19,12 +20,16 @@ public:
 
 	virtual void GeneratePrimaries(G4Event*);
 
+	G4double DifferentialFlux(double energy);
+
+
 private:
-	G4ParticleGun *fParticleGun;
+	//G4ParticleGun *fParticleGun;
+	G4GeneralParticleSource *fParticleSource;
 
 	G4double rad = 8*m;
 	G4double phi, cosTheta, sinTheta; 
-	
+
 };
 
 #endif

@@ -1,2 +1,5 @@
 /build/
 *.root
+*.db
+*.C
+*.HEPEvt
