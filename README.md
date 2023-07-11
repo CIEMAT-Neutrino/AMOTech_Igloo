@@ -59,3 +59,9 @@ You have one macro file as an example. If you start the simulation with this exa
    ./Igloo ../macros/run.mac
 ```
 it will give you back two ROOT files: output0.root and output1.root, corresponding to two runs of the simulation.
+
+## Notes
+
+This project uses the General Particle Source (GPS) of Geant4. There is commented code to use the Particle Gun (PG) instead. You can use it if you want, but you have to change the macro file to use the PG instead of the GPS.
+
+The GPS is set to monoenergetic but it uses a random energy generator to set the energy of the particle. You can't change the energy of the particle in the macro file!
