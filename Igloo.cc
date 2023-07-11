@@ -10,7 +10,6 @@
 #include "construction.hh"
 // Physics lists: (to be tested)
 #include "physics.hh" //My own physics list
-//#include "QGSP_INCLXX_HP.hh" //Not recommended
 #include "QGSP_BERT_HP.hh"
 #include "QGSP_BIC_HP.hh"
 //#include "Shielding.hh"
